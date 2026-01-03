@@ -1,0 +1,59 @@
+---
+const features = [
+  {
+    icon: "🦋",
+    title: "Wildlife Friendly",
+    description: "Native plants provide food and habitat for local butterflies, bees, birds, and other Florida wildlife."
+  },
+  {
+    icon: "💧",
+    title: "Low Maintenance",
+    description: "Once established, Florida native plants need less water, fewer fertilizers, and minimal upkeep compared to traditional lawns."
+  },
+  {
+    icon: "🌡️",
+    title: "Climate Adapted",
+    description: "Plants native to Florida thrive in our heat, humidity, and sandy soils without constant intervention."
+  },
+  {
+    icon: "💰",
+    title: "Save Money",
+    description: "Reduce your water bills, eliminate lawn chemicals, and spend less time and money on yard maintenance."
+  },
+  {
+    icon: "🌎",
+    title: "Eco-Friendly",
+    description: "Help restore Florida's natural ecosystem and reduce your environmental footprint right in your front yard."
+  },
+  {
+    icon: "🎨",
+    title: "Beautiful Year-Round",
+    description: "Enjoy colorful blooms, interesting textures, and natural beauty every season with thoughtful plant selection."
+  }
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-moss-900 mb-4">
+        Why Go Native?
+      </h2>
+      <p class="text-xl text-moss-600 max-w-2xl mx-auto">
+        Discover the benefits of replacing your traditional lawn with beautiful Florida native plants.
+      </p>
+    </div>
+    
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {features.map((feature) => (
+        <div class="bg-moss-50 rounded-2xl p-8 hover:shadow-lg transition-shadow border border-moss-100">
+          <div class="text-4xl mb-4">{feature.icon}</div>
+          <h3 class="text-xl font-bold text-moss-800 mb-3">{feature.title}</h3>
+          <p class="text-moss-600 leading-relaxed">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

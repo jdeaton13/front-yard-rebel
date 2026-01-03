@@ -1,0 +1,224 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PlantCard from '../components/PlantCard.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+// Featured Florida Native Plants - Easy to edit!
+const featuredPlants = [
+  {
+    name: "Sunshine Mimosa",
+    scientificName: "Mimosa strigillosa",
+    description: "A beautiful groundcover with pink pom-pom flowers. Perfect lawn alternative that's drought-tolerant and attracts butterflies.",
+    benefits: ["Groundcover", "Drought-tolerant", "Pollinator-friendly"]
+  },
+  {
+    name: "Blanket Flower",
+    scientificName: "Gaillardia pulchella",
+    description: "Stunning red and yellow daisy-like flowers that bloom almost year-round in Florida. Extremely heat and salt tolerant.",
+    benefits: ["Year-round blooms", "Heat-tolerant", "Low maintenance"]
+  },
+  {
+    name: "Coontie",
+    scientificName: "Zamia integrifolia",
+    description: "Florida's only native cycad. Host plant for the Atala butterfly and adds tropical texture to any garden.",
+    benefits: ["Host plant", "Evergreen", "Shade-tolerant"]
+  },
+  {
+    name: "Muhly Grass",
+    scientificName: "Muhlenbergia capillaris",
+    description: "Gorgeous ornamental grass with stunning pink plumes in fall. Creates beautiful movement and texture in the garden.",
+    benefits: ["Fall color", "Low maintenance", "Wildlife habitat"]
+  },
+  {
+    name: "Firebush",
+    scientificName: "Hamelia patens",
+    description: "A hummingbird and butterfly magnet! Produces clusters of tubular red-orange flowers throughout the warm months.",
+    benefits: ["Hummingbirds", "Butterflies", "Long blooming"]
+  },
+  {
+    name: "Beautyberry",
+    scientificName: "Callicarpa americana",
+    description: "Known for its striking purple berries in fall. Native birds love the berries and it's incredibly easy to grow.",
+    benefits: ["Bird food", "Fall interest", "Native berries"]
+  }
+];
+
+const resources = [
+  {
+    title: "Florida Native Plant Society",
+    url: "https://www.fnps.org/",
+    description: "The go-to resource for Florida native plants, with local chapter information and plant guides."
+  },
+  {
+    title: "Florida-Friendly Landscaping",
+    url: "https://ffl.ifas.ufl.edu/",
+    description: "UF/IFAS program promoting sustainable landscaping practices in Florida."
+  },
+  {
+    title: "Xerces Society",
+    url: "https://www.xerces.org/",
+    description: "Excellent resources for pollinator conservation and native plant selection."
+  },
+  {
+    title: "Audubon Native Plants Database",
+    url: "https://www.audubon.org/native-plants",
+    description: "Search for native plants by zip code to find what's best for your area."
+  }
+];
+---
+
+<Layout title="Resources | Front Yard Rebel" description="Florida native plant resources, guides, and our favorite plants for Jacksonville gardens.">
+	<!-- Hero Section -->
+	<section class="py-20 bg-gradient-to-br from-moss-100 to-earth-100">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<h1 class="text-5xl md:text-6xl font-bold text-moss-900 mb-6">
+				Native Plant Resources
+			</h1>
+			<p class="text-xl text-moss-700">
+				Everything you need to start your native plant journey
+			</p>
+		</div>
+	</section>
+	
+	<!-- Featured Plants Section -->
+	<section class="py-20 bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12">
+				<h2 class="text-4xl font-bold text-moss-900 mb-4">Featured Florida Native Plants</h2>
+				<p class="text-xl text-moss-600 max-w-2xl mx-auto">
+					Some of our favorite native plants that thrive in Jacksonville's climate. 
+					Perfect for beginners and experienced gardeners alike!
+				</p>
+			</div>
+			
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{featuredPlants.map((plant) => (
+					<PlantCard {...plant} />
+				))}
+			</div>
+		</div>
+	</section>
+	
+	<!-- Getting Started Section -->
+	<section class="py-20 bg-moss-50">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+			<h2 class="text-4xl font-bold text-moss-900 mb-8 text-center">Getting Started</h2>
+			
+			<div class="space-y-6">
+				<div class="bg-white rounded-2xl p-8 shadow-md">
+					<div class="flex items-start gap-4">
+						<div class="w-12 h-12 bg-moss-100 rounded-full flex items-center justify-center flex-shrink-0">
+							<span class="text-2xl">1</span>
+						</div>
+						<div>
+							<h3 class="text-xl font-bold text-moss-800 mb-2">Assess Your Space</h3>
+							<p class="text-moss-600">
+								Observe your front yard for a few days. Note the sun exposure (full sun, 
+								part shade, full shade), soil type, and any drainage issues. This will 
+								help you choose the right plants.
+							</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="bg-white rounded-2xl p-8 shadow-md">
+					<div class="flex items-start gap-4">
+						<div class="w-12 h-12 bg-moss-100 rounded-full flex items-center justify-center flex-shrink-0">
+							<span class="text-2xl">2</span>
+						</div>
+						<div>
+							<h3 class="text-xl font-bold text-moss-800 mb-2">Start Small</h3>
+							<p class="text-moss-600">
+								You don't have to remove your entire lawn at once! Start with a small 
+								section or flower bed. Learn what works before scaling up. This also 
+								helps if you have an HOA to deal with.
+							</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="bg-white rounded-2xl p-8 shadow-md">
+					<div class="flex items-start gap-4">
+						<div class="w-12 h-12 bg-moss-100 rounded-full flex items-center justify-center flex-shrink-0">
+							<span class="text-2xl">3</span>
+						</div>
+						<div>
+							<h3 class="text-xl font-bold text-moss-800 mb-2">Choose the Right Plants</h3>
+							<p class="text-moss-600">
+								Select Florida native plants suited to your specific conditions. Local 
+								native plant nurseries are your best resource – they can recommend 
+								plants perfect for your situation.
+							</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="bg-white rounded-2xl p-8 shadow-md">
+					<div class="flex items-start gap-4">
+						<div class="w-12 h-12 bg-moss-100 rounded-full flex items-center justify-center flex-shrink-0">
+							<span class="text-2xl">4</span>
+						</div>
+						<div>
+							<h3 class="text-xl font-bold text-moss-800 mb-2">Be Patient</h3>
+							<p class="text-moss-600">
+								Remember: "First year they sleep, second year they creep, third year 
+								they leap!" Native plants take time to establish their root systems, 
+								but once they do, they'll thrive with minimal care.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- External Resources -->
+	<section class="py-20 bg-white">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+			<h2 class="text-4xl font-bold text-moss-900 mb-8 text-center">Helpful Resources</h2>
+			
+			<div class="grid md:grid-cols-2 gap-6">
+				{resources.map((resource) => (
+					<a 
+						href={resource.url}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="block bg-moss-50 rounded-2xl p-6 hover:shadow-lg transition-shadow border border-moss-100 hover:border-moss-300"
+					>
+						<h3 class="text-lg font-bold text-moss-800 mb-2 flex items-center gap-2">
+							{resource.title}
+							<svg class="w-4 h-4 text-moss-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+							</svg>
+						</h3>
+						<p class="text-moss-600 text-sm">{resource.description}</p>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+	
+	<!-- YouTube CTA -->
+	<section class="py-16 bg-moss-50">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<h2 class="text-3xl font-bold text-moss-900 mb-4">Want More Tips?</h2>
+			<p class="text-xl text-moss-600 mb-8">
+				Check out our YouTube channel for in-depth tutorials, plant spotlights, 
+				and our complete front yard transformation series!
+			</p>
+			<a 
+				href="https://www.youtube.com/@front_yard_rebel"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors"
+			>
+				<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+					<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+				</svg>
+				Subscribe on YouTube
+			</a>
+		</div>
+	</section>
+	
+	<CallToAction />
+</Layout>
