@@ -2,32 +2,31 @@
   "pageTitle": "About Front Yard Rebel",
   "pageSubtitle": "Transforming lawns, one native plant at a time",
   "storyTitle": "Our Story",
-  "storyContent": {
-    "type": "root",
-    "children": [
-      {
-        "type": "p",
-        "children": [{ "type": "text", "text": "Welcome to Front Yard Rebel! We started this journey in Jacksonville, Florida, with a simple question: Why do we spend so much time, money, and water maintaining grass that doesn't benefit our local ecosystem?" }]
-      },
-      {
-        "type": "p",
-        "children": [{ "type": "text", "text": "That question led us down a rabbit hole of research into Florida native plants, sustainable landscaping, and the incredible wildlife that calls our state home. We discovered that by replacing our traditional lawn with native plants, we could create a beautiful, low-maintenance garden that actually gives back to the environment." }]
-      },
-      {
-        "type": "p",
-        "children": [{ "type": "text", "text": "Now, we're documenting our entire front yard transformation on YouTube and Instagram, sharing everything we learn along the way. From soil preparation to plant selection, from dealing with HOAs to attracting pollinators – we cover it all!" }]
-      }
-    ]
-  },
+  "storyContent": "\\[object Object]\n",
   "profileImage": "",
-  "profileCaption": "Add your name and a brief bio here",
+  "profileCaption": "Testing out bio updates",
   "missionIntro": "We believe that every front yard has the potential to be both beautiful AND beneficial to Florida's ecosystem. Our mission is to:",
   "missionPoints": [
-    { "emoji": "🌱", "text": "Inspire homeowners to embrace native plant landscaping" },
-    { "emoji": "📚", "text": "Educate people about Florida native plants and their benefits" },
-    { "emoji": "🦋", "text": "Create habitat for local wildlife, especially pollinators" },
-    { "emoji": "💧", "text": "Promote water conservation and sustainable gardening practices" },
-    { "emoji": "🏘️", "text": "Build a community of like-minded garden rebels" }
+    {
+      "emoji": "🌱",
+      "text": "Inspire homeowners to embrace native plant landscaping"
+    },
+    {
+      "emoji": "📚",
+      "text": "Educate people about Florida native plants and their benefits"
+    },
+    {
+      "emoji": "🦋",
+      "text": "Create habitat for local wildlife, especially pollinators"
+    },
+    {
+      "emoji": "💧",
+      "text": "Promote water conservation and sustainable gardening practices"
+    },
+    {
+      "emoji": "🏘️",
+      "text": "Build a community of like-minded garden rebels"
+    }
   ],
   "rebelSectionContent": "Let's face it – the traditional American lawn is the norm. HOAs expect it, neighbors judge by it, and we've been conditioned to think it's the only option. Going native means going against the grain. It means choosing ecology over conformity, sustainability over convention.\n\nBeing a Front Yard Rebel means standing up for what's right for Florida's environment, even when it's not the easy path. It means educating others, leading by example, and showing that a native plant garden can be just as beautiful – if not more so – than a traditional lawn."
 }

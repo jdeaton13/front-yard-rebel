@@ -1,22 +1,19 @@
+// tina/config.ts
 import { defineConfig } from "tinacms";
-
-export default defineConfig({
+var config_default = defineConfig({
   clientId: process.env.TINA_PUBLIC_CLIENT_ID,
   token: process.env.TINA_TOKEN,
   branch: process.env.TINA_BRANCH || "main",
-
   build: {
     outputFolder: "admin",
-    publicFolder: "public",
+    publicFolder: "public"
   },
-
   media: {
     tina: {
       mediaRoot: "uploads",
-      publicFolder: "public",
-    },
+      publicFolder: "public"
+    }
   },
-
   schema: {
     collections: [
       // ─── HOME PAGE ───────────────────────────────────────────────
@@ -31,24 +28,23 @@ export default defineConfig({
             type: "string",
             name: "heroTitle",
             label: "Hero Title",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "heroSubtitle",
             label: "Hero Subtitle",
             ui: { component: "textarea" },
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "missionStatement",
             label: "Mission Statement",
-            ui: { component: "textarea" },
-          },
-        ],
+            ui: { component: "textarea" }
+          }
+        ]
       },
-
       // ─── GALLERY PAGE ────────────────────────────────────────────
       {
         name: "galleryPage",
@@ -61,17 +57,16 @@ export default defineConfig({
             type: "string",
             name: "bannerHeading",
             label: "Banner Heading",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "bannerBody",
             label: "Banner Body Text",
-            ui: { component: "textarea" },
-          },
-        ],
+            ui: { component: "textarea" }
+          }
+        ]
       },
-
       // ─── ABOUT PAGE ──────────────────────────────────────────────
       {
         name: "about",
@@ -83,38 +78,38 @@ export default defineConfig({
           {
             type: "string",
             name: "pageTitle",
-            label: "Page Title",
+            label: "Page Title"
           },
           {
             type: "string",
             name: "pageSubtitle",
-            label: "Page Subtitle",
+            label: "Page Subtitle"
           },
           {
             type: "string",
             name: "storyTitle",
-            label: "Story Section Title",
+            label: "Story Section Title"
           },
           {
             type: "rich-text",
             name: "storyContent",
-            label: "Your Story",
+            label: "Your Story"
           },
           {
             type: "image",
             name: "profileImage",
-            label: "Profile Photo",
+            label: "Profile Photo"
           },
           {
             type: "string",
             name: "profileCaption",
-            label: "Profile Photo Caption (e.g. your name/bio)",
+            label: "Profile Photo Caption (e.g. your name/bio)"
           },
           {
             type: "string",
             name: "missionIntro",
             label: "Mission Intro Text",
-            ui: { component: "textarea" },
+            ui: { component: "textarea" }
           },
           {
             type: "object",
@@ -122,22 +117,21 @@ export default defineConfig({
             label: "Mission Points",
             list: true,
             ui: {
-              itemProps: (item) => ({ label: item?.text }),
+              itemProps: (item) => ({ label: item?.text })
             },
             fields: [
               { type: "string", name: "emoji", label: "Emoji" },
-              { type: "string", name: "text", label: "Text" },
-            ],
+              { type: "string", name: "text", label: "Text" }
+            ]
           },
           {
             type: "string",
             name: "rebelSectionContent",
-            label: "Why \"Rebel\"? Section",
-            ui: { component: "textarea" },
-          },
-        ],
+            label: 'Why "Rebel"? Section',
+            ui: { component: "textarea" }
+          }
+        ]
       },
-
       // ─── PLANTS ──────────────────────────────────────────────────
       {
         name: "plant",
@@ -150,35 +144,34 @@ export default defineConfig({
             name: "name",
             label: "Plant Name",
             isTitle: true,
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "scientificName",
             label: "Scientific Name",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "description",
             label: "Description",
             ui: { component: "textarea" },
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "benefits",
             label: "Benefits / Tags",
-            list: true,
+            list: true
           },
           {
             type: "image",
             name: "image",
-            label: "Plant Photo",
-          },
-        ],
+            label: "Plant Photo"
+          }
+        ]
       },
-
       // ─── RESOURCES ───────────────────────────────────────────────
       {
         name: "resource",
@@ -191,23 +184,22 @@ export default defineConfig({
             name: "title",
             label: "Title",
             isTitle: true,
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "url",
             label: "URL",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "description",
             label: "Description",
-            ui: { component: "textarea" },
-          },
-        ],
+            ui: { component: "textarea" }
+          }
+        ]
       },
-
       // ─── GALLERY ─────────────────────────────────────────────────
       {
         name: "gallery",
@@ -220,22 +212,21 @@ export default defineConfig({
             name: "caption",
             label: "Caption",
             isTitle: true,
-            required: true,
+            required: true
           },
           {
             type: "image",
             name: "image",
             label: "Photo",
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "alt",
-            label: "Alt text (for accessibility)",
-          },
-        ],
+            label: "Alt text (for accessibility)"
+          }
+        ]
       },
-
       // ─── FAQ ─────────────────────────────────────────────────────
       {
         name: "faq",
@@ -248,17 +239,20 @@ export default defineConfig({
             name: "question",
             label: "Question",
             isTitle: true,
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "answer",
             label: "Answer",
             ui: { component: "textarea" },
-            required: true,
-          },
-        ],
-      },
-    ],
-  },
+            required: true
+          }
+        ]
+      }
+    ]
+  }
 });
+export {
+  config_default as default
+};

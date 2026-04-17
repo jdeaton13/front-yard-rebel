@@ -1,0 +1,58 @@
+fragment HomeParts on Home {
+  __typename
+  heroTitle
+  heroSubtitle
+  missionStatement
+}
+
+fragment GalleryPageParts on GalleryPage {
+  __typename
+  bannerHeading
+  bannerBody
+}
+
+fragment AboutParts on About {
+  __typename
+  pageTitle
+  pageSubtitle
+  storyTitle
+  storyContent
+  profileImage
+  profileCaption
+  missionIntro
+  missionPoints {
+    __typename
+    emoji
+    text
+  }
+  rebelSectionContent
+}
+
+fragment PlantParts on Plant {
+  __typename
+  name
+  scientificName
+  description
+  benefits
+  image
+}
+
+fragment ResourceParts on Resource {
+  __typename
+  title
+  url
+  description
+}
+
+fragment GalleryParts on Gallery {
+  __typename
+  caption
+  image
+  alt
+}
+
+fragment FaqParts on Faq {
+  __typename
+  question
+  answer
+}

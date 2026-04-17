@@ -4,6 +4,8 @@ import CallToAction from '../components/CallToAction.astro';
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 
+const galleryPage = JSON.parse(readFileSync(join(process.cwd(), 'content/gallery-page/index.json'), 'utf-8'));
+
 const galleryDir = join(process.cwd(), 'content/gallery');
 const galleryItems = readdirSync(galleryDir)
   .filter((f: string) => f.endsWith('.json'))
@@ -28,11 +30,8 @@ const galleryItems = readdirSync(galleryDir)
 		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 			<div class="bg-moss-50 border border-moss-200 rounded-2xl p-8">
 				<span class="text-4xl mb-4 block">📸</span>
-				<h2 class="text-2xl font-bold text-moss-800 mb-4">Photo Gallery Coming Soon!</h2>
-				<p class="text-moss-600 mb-6">
-					We're working on documenting our garden transformation. In the meantime, 
-					check out our Instagram for the latest photos and updates!
-				</p>
+				<h2 class="text-2xl font-bold text-moss-800 mb-4">{galleryPage.bannerHeading}</h2>
+				<p class="text-moss-600 mb-6">{galleryPage.bannerBody}</p>
 				<a 
 					href="https://www.instagram.com/front_yard_rebel"
 					target="_blank"
@@ -63,7 +62,7 @@ const galleryItems = readdirSync(galleryDir)
 								class="w-full aspect-square object-cover"
 							/>
 							{item.caption && (
-								<div class="p-4 bg-white">
+								<div class="p-4 bg-white text-center">
 									<p class="text-moss-700 text-sm">{item.caption}</p>
 								</div>
 							)}
