@@ -1,6 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CallToAction from '../components/CallToAction.astro';
+import { readFileSync, readdirSync } from 'fs';
+import { join } from 'path';
+import { experimental_AstroContainer as AstroContainer } from 'astro/container';
+
+const about = JSON.parse(
+  readFileSync(join(process.cwd(), 'content/about/index.json'), 'utf-8')
+);
+
+// Render rich-text story as HTML paragraphs
+function renderStory(content: any): string {
+  if (!content?.children) return '';
+  return content.children
+    .map((block: any) => {
+      const text = block.children?.map((n: any) => n.text).join('') ?? '';
+      return `<p class="text-moss-600 mb-6 leading-relaxed">${text}</p>`;
+    })
+    .join('');
+}
 ---
 
 <Layout title="About | Front Yard Rebel" description="Learn about Front Yard Rebel and our mission to transform Jacksonville front yards with beautiful Florida native plants.">
@@ -8,10 +26,10 @@ import CallToAction from '../components/CallToAction.astro';
 	<section class="py-20 bg-gradient-to-br from-moss-100 to-earth-100">
 		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 			<h1 class="text-5xl md:text-6xl font-bold text-moss-900 mb-6">
-				About Front Yard Rebel
+				{about.pageTitle}
 			</h1>
 			<p class="text-xl text-moss-700">
-				Transforming lawns, one native plant at a time
+				{about.pageSubtitle}
 			</p>
 		</div>
 	</section>
@@ -19,90 +37,40 @@ import CallToAction from '../components/CallToAction.astro';
 	<!-- Story Section -->
 	<section class="py-20 bg-white">
 		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="prose prose-lg max-w-none">
-				<!-- EDIT: Replace this placeholder content with your actual story -->
-				<h2 class="text-3xl font-bold text-moss-900 mb-6">Our Story</h2>
-				
-				<p class="text-moss-600 mb-6 leading-relaxed">
-					<strong class="text-moss-800">[PLACEHOLDER - Edit this section with your personal story]</strong>
-				</p>
-				
-				<p class="text-moss-600 mb-6 leading-relaxed">
-					Welcome to Front Yard Rebel! We started this journey in Jacksonville, Florida, with a simple 
-					question: Why do we spend so much time, money, and water maintaining grass that doesn't 
-					benefit our local ecosystem?
-				</p>
-				
-				<p class="text-moss-600 mb-6 leading-relaxed">
-					That question led us down a rabbit hole of research into Florida native plants, sustainable 
-					landscaping, and the incredible wildlife that calls our state home. We discovered that by 
-					replacing our traditional lawn with native plants, we could create a beautiful, low-maintenance 
-					garden that actually gives back to the environment.
-				</p>
-				
-				<p class="text-moss-600 mb-6 leading-relaxed">
-					Now, we're documenting our entire front yard transformation on YouTube and Instagram, sharing 
-					everything we learn along the way. From soil preparation to plant selection, from dealing with 
-					HOAs to attracting pollinators – we cover it all!
-				</p>
-				
-				<!-- Profile Image Placeholder -->
-				<div class="my-12 text-center">
-					<div class="inline-block w-48 h-48 bg-gradient-to-br from-moss-200 to-moss-300 rounded-full flex items-center justify-center">
-						<div class="text-center">
-							<span class="text-6xl">👤</span>
-							<p class="text-moss-600 text-sm mt-2">[Your Photo]</p>
-						</div>
+			<h2 class="text-3xl font-bold text-moss-900 mb-6">{about.storyTitle}</h2>
+			<div set:html={renderStory(about.storyContent)} />
+
+			<!-- Profile Image -->
+			<div class="my-12 text-center">
+				{about.profileImage ? (
+					<img
+						src={about.profileImage}
+						alt={about.profileCaption}
+						class="w-48 h-48 mx-auto rounded-full object-cover shadow-lg"
+					/>
+				) : (
+					<div class="inline-flex w-48 h-48 bg-gradient-to-br from-moss-200 to-moss-300 rounded-full items-center justify-center">
+						<span class="text-6xl">👤</span>
 					</div>
-					<p class="mt-4 text-moss-500 italic">[Add your name and a brief bio here]</p>
-				</div>
-				
-				<h2 class="text-3xl font-bold text-moss-900 mb-6 mt-12">Our Mission</h2>
-				
-				<p class="text-moss-600 mb-6 leading-relaxed">
-					We believe that every front yard has the potential to be both beautiful AND beneficial 
-					to Florida's ecosystem. Our mission is to:
-				</p>
-				
-				<ul class="space-y-4 mb-8">
-					<li class="flex items-start gap-3">
-						<span class="text-moss-500 text-xl">🌱</span>
-						<span class="text-moss-600">Inspire homeowners to embrace native plant landscaping</span>
-					</li>
-					<li class="flex items-start gap-3">
-						<span class="text-moss-500 text-xl">📚</span>
-						<span class="text-moss-600">Educate people about Florida native plants and their benefits</span>
-					</li>
-					<li class="flex items-start gap-3">
-						<span class="text-moss-500 text-xl">🦋</span>
-						<span class="text-moss-600">Create habitat for local wildlife, especially pollinators</span>
-					</li>
-					<li class="flex items-start gap-3">
-						<span class="text-moss-500 text-xl">💧</span>
-						<span class="text-moss-600">Promote water conservation and sustainable gardening practices</span>
-					</li>
-					<li class="flex items-start gap-3">
-						<span class="text-moss-500 text-xl">🏘️</span>
-						<span class="text-moss-600">Build a community of like-minded garden rebels</span>
-					</li>
-				</ul>
-				
-				<h2 class="text-3xl font-bold text-moss-900 mb-6 mt-12">Why "Rebel"?</h2>
-				
-				<p class="text-moss-600 mb-6 leading-relaxed">
-					Let's face it – the traditional American lawn is the norm. HOAs expect it, neighbors 
-					judge by it, and we've been conditioned to think it's the only option. Going native 
-					means going against the grain. It means choosing ecology over conformity, sustainability 
-					over convention.
-				</p>
-				
-				<p class="text-moss-600 mb-6 leading-relaxed">
-					Being a Front Yard Rebel means standing up for what's right for Florida's environment, 
-					even when it's not the easy path. It means educating others, leading by example, and 
-					showing that a native plant garden can be just as beautiful – if not more so – than a 
-					traditional lawn.
-				</p>
+				)}
+				<p class="mt-4 text-moss-500 italic">{about.profileCaption}</p>
 			</div>
+
+			<h2 class="text-3xl font-bold text-moss-900 mb-6 mt-12">Our Mission</h2>
+			<p class="text-moss-600 mb-6 leading-relaxed">{about.missionIntro}</p>
+			<ul class="space-y-4 mb-8">
+				{about.missionPoints?.map((point: any) => (
+					<li class="flex items-start gap-3">
+						<span class="text-moss-500 text-xl">{point.emoji}</span>
+						<span class="text-moss-600">{point.text}</span>
+					</li>
+				))}
+			</ul>
+
+			<h2 class="text-3xl font-bold text-moss-900 mb-6 mt-12">Why "Rebel"?</h2>
+			{about.rebelSectionContent?.split('\n\n').map((para: string) => (
+				<p class="text-moss-600 mb-6 leading-relaxed">{para}</p>
+			))}
 		</div>
 	</section>
 	

@@ -1,5 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { readFileSync, readdirSync } from 'fs';
+import { join } from 'path';
+
+const faqDir = join(process.cwd(), 'content/faq');
+const faqs = readdirSync(faqDir)
+  .filter((f: string) => f.endsWith('.json'))
+  .map((f: string) => JSON.parse(readFileSync(join(faqDir, f), 'utf-8')));
 ---
 
 <Layout title="Contact | Front Yard Rebel" description="Get in touch with Front Yard Rebel. Connect with us on social media or send us a message.">
@@ -168,39 +175,12 @@ import Layout from '../layouts/Layout.astro';
 			<h2 class="text-4xl font-bold text-moss-900 mb-12 text-center">Frequently Asked Questions</h2>
 			
 			<div class="space-y-6">
-				<div class="bg-white rounded-2xl p-6 shadow-md">
-					<h3 class="text-lg font-bold text-moss-800 mb-2">Do you offer landscaping services?</h3>
-					<p class="text-moss-600">
-						Currently, we're focused on documenting our own garden transformation and 
-						educating others through our content. We don't offer professional landscaping 
-						services at this time.
-					</p>
-				</div>
-				
-				<div class="bg-white rounded-2xl p-6 shadow-md">
-					<h3 class="text-lg font-bold text-moss-800 mb-2">Where can I buy Florida native plants?</h3>
-					<p class="text-moss-600">
-						Check out local native plant nurseries in the Jacksonville area! We also 
-						recommend attending Florida Native Plant Society sales. We share our 
-						favorite sources on our YouTube channel.
-					</p>
-				</div>
-				
-				<div class="bg-white rounded-2xl p-6 shadow-md">
-					<h3 class="text-lg font-bold text-moss-800 mb-2">Can I use your photos/videos?</h3>
-					<p class="text-moss-600">
-						Please reach out to us directly for any media usage requests. We're happy 
-						to discuss collaborations and proper attribution.
-					</p>
-				</div>
-				
-				<div class="bg-white rounded-2xl p-6 shadow-md">
-					<h3 class="text-lg font-bold text-moss-800 mb-2">Will you have merchandise available?</h3>
-					<p class="text-moss-600">
-						Yes! We're working on a merch line for fellow garden rebels. Follow us on 
-						social media to be the first to know when it launches!
-					</p>
-				</div>
+				{faqs.map((faq: any) => (
+					<div class="bg-white rounded-2xl p-6 shadow-md">
+						<h3 class="text-lg font-bold text-moss-800 mb-2">{faq.question}</h3>
+						<p class="text-moss-600">{faq.answer}</p>
+					</div>
+				))}
 			</div>
 		</div>
 	</section>

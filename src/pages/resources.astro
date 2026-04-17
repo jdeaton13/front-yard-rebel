@@ -2,69 +2,18 @@
 import Layout from '../layouts/Layout.astro';
 import PlantCard from '../components/PlantCard.astro';
 import CallToAction from '../components/CallToAction.astro';
+import { readFileSync, readdirSync } from 'fs';
+import { join } from 'path';
 
-// Featured Florida Native Plants - Easy to edit!
-const featuredPlants = [
-  {
-    name: "Sunshine Mimosa",
-    scientificName: "Mimosa strigillosa",
-    description: "A beautiful groundcover with pink pom-pom flowers. Perfect lawn alternative that's drought-tolerant and attracts butterflies.",
-    benefits: ["Groundcover", "Drought-tolerant", "Pollinator-friendly"]
-  },
-  {
-    name: "Blanket Flower",
-    scientificName: "Gaillardia pulchella",
-    description: "Stunning red and yellow daisy-like flowers that bloom almost year-round in Florida. Extremely heat and salt tolerant.",
-    benefits: ["Year-round blooms", "Heat-tolerant", "Low maintenance"]
-  },
-  {
-    name: "Coontie",
-    scientificName: "Zamia integrifolia",
-    description: "Florida's only native cycad. Host plant for the Atala butterfly and adds tropical texture to any garden.",
-    benefits: ["Host plant", "Evergreen", "Shade-tolerant"]
-  },
-  {
-    name: "Muhly Grass",
-    scientificName: "Muhlenbergia capillaris",
-    description: "Gorgeous ornamental grass with stunning pink plumes in fall. Creates beautiful movement and texture in the garden.",
-    benefits: ["Fall color", "Low maintenance", "Wildlife habitat"]
-  },
-  {
-    name: "Firebush",
-    scientificName: "Hamelia patens",
-    description: "A hummingbird and butterfly magnet! Produces clusters of tubular red-orange flowers throughout the warm months.",
-    benefits: ["Hummingbirds", "Butterflies", "Long blooming"]
-  },
-  {
-    name: "Beautyberry",
-    scientificName: "Callicarpa americana",
-    description: "Known for its striking purple berries in fall. Native birds love the berries and it's incredibly easy to grow.",
-    benefits: ["Bird food", "Fall interest", "Native berries"]
-  }
-];
+const plantsDir = join(process.cwd(), 'content/plants');
+const featuredPlants = readdirSync(plantsDir)
+  .filter((f: string) => f.endsWith('.json'))
+  .map((f: string) => JSON.parse(readFileSync(join(plantsDir, f), 'utf-8')));
 
-const resources = [
-  {
-    title: "Florida Native Plant Society",
-    url: "https://www.fnps.org/",
-    description: "The go-to resource for Florida native plants, with local chapter information and plant guides."
-  },
-  {
-    title: "Florida-Friendly Landscaping",
-    url: "https://ffl.ifas.ufl.edu/",
-    description: "UF/IFAS program promoting sustainable landscaping practices in Florida."
-  },
-  {
-    title: "Xerces Society",
-    url: "https://www.xerces.org/",
-    description: "Excellent resources for pollinator conservation and native plant selection."
-  },
-  {
-    title: "Audubon Native Plants Database",
-    url: "https://www.audubon.org/native-plants",
-    description: "Search for native plants by zip code to find what's best for your area."
-  }
-];
+const resourcesDir = join(process.cwd(), 'content/resources');
+const resources = readdirSync(resourcesDir)
+  .filter((f: string) => f.endsWith('.json'))
+  .map((f: string) => JSON.parse(readFileSync(join(resourcesDir, f), 'utf-8')));
 ---
 
 <Layout title="Resources | Front Yard Rebel" description="Florida native plant resources, guides, and our favorite plants for Jacksonville gardens.">

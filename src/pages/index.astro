@@ -3,10 +3,16 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Features from '../components/Features.astro';
 import CallToAction from '../components/CallToAction.astro';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
+const home = JSON.parse(
+  readFileSync(join(process.cwd(), 'content/home/index.json'), 'utf-8')
+);
 ---
 
 <Layout>
-	<Hero />
+	<Hero title={home.heroTitle} subtitle={home.heroSubtitle} />
 	
 	<!-- Mission Statement -->
 	<section class="py-20 bg-white">
@@ -15,9 +21,7 @@ import CallToAction from '../components/CallToAction.astro';
 				What is Front Yard Rebel?
 			</h2>
 			<p class="text-lg text-moss-600 leading-relaxed mb-8">
-				We're on a mission to transform Jacksonville's front yards from boring, resource-hungry lawns 
-				into vibrant, sustainable gardens filled with Florida native plants. Our front yard is our 
-				canvas, and we're documenting every step of the journey to inspire others to join the rebellion.
+				{home.missionStatement}
 			</p>
 			<div class="flex flex-wrap justify-center gap-6 text-moss-700">
 				<div class="flex items-center gap-2">
