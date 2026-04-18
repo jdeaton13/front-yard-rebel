@@ -23,14 +23,16 @@ const home = JSON.parse(
 			<p class="text-lg text-moss-600 leading-relaxed mb-8">
 				{home.missionStatement}
 			</p>
-			<div class="flex flex-wrap justify-center gap-6 text-moss-700">
-				{home.badges?.map((badge: any) => (
-					<div class="flex items-center gap-2">
-						<span class="text-2xl">{badge.emoji}</span>
-						<span>{badge.text}</span>
-					</div>
-				))}
-			</div>
+			{home.badges?.length > 0 && (
+				<div class="flex flex-wrap justify-center gap-6 text-moss-700">
+					{home.badges.map((badge: any) => (
+						<div class="flex items-center gap-2">
+							<span class="text-2xl">{badge.emoji}</span>
+							<span>{badge.text}</span>
+						</div>
+					))}
+				</div>
+			)}
 		</div>
 	</section>
 	
