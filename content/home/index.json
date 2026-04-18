@@ -2,20 +2,6 @@
   "heroTitle": "From Grass to Garden",
   "heroSubtitle": "Transform your front yard into a beautiful, sustainable Florida native/friendly plant garden. Better for you, better for wildlife, better for Florida.",
   "missionStatement": "We're on a mission to transform suburban front yards from boring, resource-hungry lawns into vibrant, sustainable gardens filled with Florida native/friendly plants. Our front yard is our canvas, and we're documenting every step of the journey to inspire others to join the rebellion.",
-  "badges": [
-    {
-      "emoji": "📍",
-      "text": "Jacksonville, FL"
-    },
-    {
-      "emoji": "🌱",
-      "text": "100% Native Plants"
-    },
-    {
-      "emoji": "🚫",
-      "text": "Zero Lawn"
-    }
-  ],
   "features": [
     {
       "icon": "🦋",
