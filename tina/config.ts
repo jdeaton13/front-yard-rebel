@@ -46,6 +46,59 @@ export default defineConfig({
             label: "Mission Statement",
             ui: { component: "textarea" },
           },
+          {
+            type: "object",
+            name: "badges",
+            label: "Mission Badges",
+            list: true,
+            ui: {
+              itemProps: (item: any) => ({ label: `${item.emoji} ${item.text}` }),
+            },
+            fields: [
+              {
+                type: "string",
+                name: "emoji",
+                label: "Emoji (Windows: Win+.  Mac: Cmd+Ctrl+Space)",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "text",
+                label: "Text",
+                required: true,
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "features",
+            label: "Why Go Native? Feature Cards",
+            list: true,
+            ui: {
+              itemProps: (item: any) => ({ label: `${item.icon} ${item.title}` }),
+            },
+            fields: [
+              {
+                type: "string",
+                name: "icon",
+                label: "Emoji Icon (Windows: Win+.  Mac: Cmd+Ctrl+Space)",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "title",
+                label: "Title",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "description",
+                label: "Description",
+                ui: { component: "textarea" },
+                required: true,
+              },
+            ],
+          },
         ],
       },
 

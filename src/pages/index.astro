@@ -24,18 +24,12 @@ const home = JSON.parse(
 				{home.missionStatement}
 			</p>
 			<div class="flex flex-wrap justify-center gap-6 text-moss-700">
-				<div class="flex items-center gap-2">
-					<span class="text-2xl">📍</span>
-					<span>Jacksonville, FL</span>
-				</div>
-				<div class="flex items-center gap-2">
-					<span class="text-2xl">🌱</span>
-					<span>100% Native Plants</span>
-				</div>
-				<div class="flex items-center gap-2">
-					<span class="text-2xl">🚫</span>
-					<span>Zero Lawn</span>
-				</div>
+				{home.badges?.map((badge: any) => (
+					<div class="flex items-center gap-2">
+						<span class="text-2xl">{badge.emoji}</span>
+						<span>{badge.text}</span>
+					</div>
+				))}
 			</div>
 		</div>
 	</section>

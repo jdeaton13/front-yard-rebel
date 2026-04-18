@@ -1,36 +1,10 @@
 ---
-const features = [
-  {
-    icon: "🦋",
-    title: "Wildlife Friendly",
-    description: "Native plants provide food and habitat for local butterflies, bees, birds, and other Florida wildlife."
-  },
-  {
-    icon: "💧",
-    title: "Low Maintenance",
-    description: "Once established, Florida native plants need less water, fewer fertilizers, and minimal upkeep compared to traditional lawns."
-  },
-  {
-    icon: "🌡️",
-    title: "Climate Adapted",
-    description: "Plants native to Florida thrive in our heat, humidity, and sandy soils without constant intervention."
-  },
-  {
-    icon: "💰",
-    title: "Save Money",
-    description: "Reduce your water bills, eliminate lawn chemicals, and spend less time and money on yard maintenance."
-  },
-  {
-    icon: "🌎",
-    title: "Eco-Friendly",
-    description: "Help restore Florida's natural ecosystem and reduce your environmental footprint right in your front yard."
-  },
-  {
-    icon: "🎨",
-    title: "Beautiful Year-Round",
-    description: "Enjoy colorful blooms, interesting textures, and natural beauty every season with thoughtful plant selection."
-  }
-];
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
+const { features } = JSON.parse(
+  readFileSync(join(process.cwd(), 'content/home/index.json'), 'utf-8')
+);
 ---
 
 <section class="py-20 bg-white">
