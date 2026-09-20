@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PlantCard from '../components/PlantCard.astro';
+import ProductCard from '../components/ProductCard.astro';
 import CallToAction from '../components/CallToAction.astro';
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
@@ -14,6 +15,15 @@ const resourcesDir = join(process.cwd(), 'content/resources');
 const resources = readdirSync(resourcesDir)
   .filter((f: string) => f.endsWith('.json'))
   .map((f: string) => JSON.parse(readFileSync(join(resourcesDir, f), 'utf-8')));
+
+const productsDir = join(process.cwd(), 'content/products');
+const allProducts = readdirSync(productsDir)
+  .filter((f: string) => f.endsWith('.json'))
+  .map((f: string) => JSON.parse(readFileSync(join(productsDir, f), 'utf-8')));
+const featuredProducts = (allProducts.filter((p: any) => p.featured).length > 0
+  ? allProducts.filter((p: any) => p.featured)
+  : allProducts
+).slice(0, 3);
 ---
 
 <Layout title="Resources | Front Yard Rebel" description="Florida native plant resources, guides, and our favorite plants for Jacksonville gardens.">
@@ -120,6 +130,35 @@ const resources = readdirSync(resourcesDir)
 			</div>
 		</div>
 	</section>
+	
+	<!-- Tools & Products We Recommend -->
+	{featuredProducts.length > 0 && (
+		<section class="py-20 bg-earth-50">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="text-center mb-12">
+					<h2 class="text-4xl font-bold text-moss-900 mb-4">Tools & Products We Recommend</h2>
+					<p class="text-xl text-moss-600 max-w-2xl mx-auto">
+						The gear we actually reach for when working on our own native garden.
+					</p>
+				</div>
+
+				<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+					{featuredProducts.map((product: any) => (
+						<ProductCard {...product} />
+					))}
+				</div>
+
+				<div class="text-center">
+					<a href="/shop" class="inline-flex items-center gap-2 text-moss-700 font-semibold hover:text-moss-500">
+						See All Gear
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</section>
+	)}
 	
 	<!-- External Resources -->
 	<section class="py-20 bg-white">

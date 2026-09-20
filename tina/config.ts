@@ -312,6 +312,82 @@ export default defineConfig({
           },
         ],
       },
+
+      // ─── SHOP PAGE ───────────────────────────────────────────────
+      {
+        name: "shopPage",
+        label: "Rebel's Gear Page",
+        path: "content/shop-page",
+        format: "json",
+        ui: { allowedActions: { create: false, delete: false } },
+        fields: [
+          {
+            type: "string",
+            name: "heroHeading",
+            label: "Hero Heading",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "heroSubtitle",
+            label: "Hero Subtitle",
+            ui: { component: "textarea" },
+          },
+          {
+            type: "string",
+            name: "disclosureText",
+            label: "Affiliate Disclosure Text",
+            ui: { component: "textarea" },
+            required: true,
+          },
+        ],
+      },
+
+      // ─── PRODUCTS (AFFILIATE) ────────────────────────────────────
+      {
+        name: "product",
+        label: "Rebel's Gear (Affiliate Products)",
+        path: "content/products",
+        format: "json",
+        fields: [
+          {
+            type: "string",
+            name: "name",
+            label: "Product Name",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "image",
+            name: "image",
+            label: "Product Photo",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "affiliateUrl",
+            label: "Amazon Affiliate Link",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "Short Description",
+            ui: { component: "textarea" },
+            required: true,
+          },
+          {
+            type: "string",
+            name: "badge",
+            label: "Badge (optional, e.g. \"Rebel's Pick\", \"Best Seller\")",
+          },
+          {
+            type: "boolean",
+            name: "featured",
+            label: "Show in Home & Resources highlights",
+          },
+        ],
+      },
     ],
   },
 });

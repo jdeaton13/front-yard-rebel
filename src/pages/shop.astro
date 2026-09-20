@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { readFileSync, readdirSync } from 'fs';
+import { join } from 'path';
+
+const shopPage = JSON.parse(readFileSync(join(process.cwd(), 'content/shop-page/index.json'), 'utf-8'));
+
+const productsDir = join(process.cwd(), 'content/products');
+const products = readdirSync(productsDir)
+  .filter((f: string) => f.endsWith('.json'))
+  .map((f: string) => JSON.parse(readFileSync(join(productsDir, f), 'utf-8')));
+---
+
+<Layout title="Rebel's Gear | Front Yard Rebel" description="The tools, plants, and products we actually use to transform our Jacksonville front yard.">
+	<!-- Hero Section -->
+	<section class="py-20 bg-gradient-to-br from-moss-100 to-earth-100">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<h1 class="text-5xl md:text-6xl font-bold text-moss-900 mb-6">
+				{shopPage.heroHeading}
+			</h1>
+			<p class="text-xl text-moss-700">
+				{shopPage.heroSubtitle}
+			</p>
+		</div>
+	</section>
+
+	<!-- Product Grid -->
+	<section class="py-20 bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="mb-12">
+				<AffiliateDisclosure text={shopPage.disclosureText} />
+			</div>
+
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{products.map((product) => (
+					<ProductCard {...product} />
+				))}
+			</div>
+		</div>
+	</section>
+
+	<CallToAction />
+</Layout>

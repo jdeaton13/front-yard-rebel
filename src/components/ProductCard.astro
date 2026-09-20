@@ -1,0 +1,47 @@
+---
+interface Props {
+  name: string;
+  image: string;
+  affiliateUrl: string;
+  description: string;
+  badge?: string;
+  imageAlt?: string;
+}
+
+const { name, image, affiliateUrl, description, badge, imageAlt = name } = Astro.props;
+---
+
+<div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-moss-100 flex flex-col">
+  <div class="h-48 bg-gradient-to-br from-earth-100 to-earth-200 flex items-center justify-center relative">
+    {image ? (
+      <img src={image} alt={imageAlt} class="w-full h-full object-cover" />
+    ) : (
+      <div class="text-center">
+        <span class="text-6xl">🛒</span>
+        <p class="text-earth-600 text-sm mt-2">Image: {imageAlt}</p>
+      </div>
+    )}
+    {badge && (
+      <span class="absolute top-3 left-3 bg-sunset-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+        {badge}
+      </span>
+    )}
+  </div>
+
+  <div class="p-6 flex flex-col flex-grow">
+    <h3 class="text-xl font-bold text-moss-800 mb-2">{name}</h3>
+    <p class="text-moss-600 mb-6 flex-grow">{description}</p>
+
+    <a
+      href={affiliateUrl}
+      target="_blank"
+      rel="noopener noreferrer sponsored nofollow"
+      class="inline-flex items-center justify-center gap-2 bg-sunset-500 hover:bg-sunset-600 text-white px-5 py-3 rounded-full font-semibold transition-colors"
+    >
+      Shop on Amazon
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+      </svg>
+    </a>
+  </div>
+</div>
